@@ -21,6 +21,7 @@ class App extends Component {
           return {
             ...item,
             complete: !item.complete
+            //Add_item:
           }
         }
         return item

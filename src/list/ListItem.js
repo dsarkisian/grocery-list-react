@@ -1,24 +1,45 @@
 import React from 'react';
-import List from 'List.js';
+//import List from 'List.js';
+import { Checkbox, Header, Button, Icon } from 'semantic-ui-react';
 
-const styles = {
-  todo: {
-    cursor: 'pointer',
-  },
-  complete: {
-    color: 'grey',
-    textDecoration: 'line-through',
-  },
-}
 
-const ListItem = ({ id, name, complete }) => (
-  <li> 
-  style={ complete ? { ...styles.ListItem, ...styles.complete } : styles.ListItem }
-   onClick={ () => ListItemClick(id)}
-    { name }
-  </li>
+
+const ListItem = ({ id, name, complete, updateListItem, deleteListItem }) => (
+  <div style={styles.flex}>
+    <div>
+      <Checkbox
+        defaultChecked={complete}
+        onClick={ () => updateListItem(id) }
+      />
+      <div style={complete ? styles.complete : {} } className='center'>
+        <Header>{ name }</Header>
+      </div>
+    </div>
+    <Button
+      onClick={ () => deleteListItem(id) }
+      icon
+      size='tiny'
+      color='red'
+    >
+      <Icon name="trash"/>
+    </Button>
+  </div>
 )
 
+const styles = {
+    todo: {
+        cursor: 'pointer',
+      },
+    complete: {
+      textDecoration: 'line-through',
+      color: 'grey',
+    },
+    flex: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+  }
+  
 export default ListItem;
 
 
