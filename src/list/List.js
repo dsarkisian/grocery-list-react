@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, TableCell, Button, Checkbox} from 'semantic-ui-react';
 
 
-const List = ({ groceryItems, complete}) => (
+const List = ({ items, complete}) => (
   <Table celled>
     <Table.Header>
       <Table.Row>
@@ -14,7 +14,7 @@ const List = ({ groceryItems, complete}) => (
 
     <Table.Body>
       {
-        groceryItems.map(item => (
+        items.map(item => (
           <Table.Row key={item.id}>
             <TableCell>{item.id}</TableCell>
             <TableCell style={ item.complete ? { ...styles.item, ...styles.complete } : styles.item }>{item.name}</TableCell>
