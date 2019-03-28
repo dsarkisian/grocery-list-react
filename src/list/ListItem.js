@@ -1,24 +1,17 @@
 import React from 'react';
-import List from 'List.js';
+import { Table, Checkbox } from 'semantic-ui-react';
 
-const styles = {
-  todo: {
-    cursor: 'pointer',
-  },
-  complete: {
-    color: 'grey',
-    textDecoration: 'line-through',
-  },
-}
-
-const ListItem = ({ id, name, complete }) => (
-  <li> 
-  style={ complete ? { ...styles.ListItem, ...styles.complete } : styles.ListItem }
-   onClick={ () => ListItemClick(id)}
-    { name }
-  </li>
+const ListItem = ({ id, name, complete, completion}) => (
+  <Table.Row key={id}>
+  <Table.Cell style={complete ? styles.complete : {} }>{name}</Table.Cell>
+  <Table.Cell>
+    <Checkbox  color='blue' onClick={() => completion(id)} label={<label>Completed</label>} />
+  </Table.Cell>
+</Table.Row>
 )
 
+const styles = {
+  complete: { color: 'grey', textDecoration: 'line-through' },
+};
+
 export default ListItem;
-
-
